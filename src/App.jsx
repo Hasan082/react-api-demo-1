@@ -1,12 +1,13 @@
 import './App.css'
-import Card from './assets/Components/Card'
+import AllPost from './assets/Components/AllPost'
+
 
 function App() {
   
 
   return (
     <>
-      <Card /> 
+      <AllPost/>
     </>
   )
 }
