@@ -1,13 +1,15 @@
+import { Outlet } from 'react-router-dom'
 import './App.css'
-import AllPost from './assets/Components/AllPost'
+
 
 
 function App() {
-  
+
 
   return (
     <>
-      <AllPost/>
+      {/* <h1>This is main layout</h1>
+        <Outlet /> */}
     </>
   )
 }

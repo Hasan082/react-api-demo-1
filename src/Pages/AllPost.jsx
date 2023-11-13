@@ -1,30 +1,29 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import Spinner from "./Spinner";
-import SingleCard from "./SingleCard";
+import { useEffect, useState, useContext } from "react";
+import SingleCard from "../Components/SingleCard";
+import { MyContext } from "../Provider/MyProvider";
+
 
 
 const AllPost = () => {
     const [posts, setPosts] = useState([]);
-    const [loading, setLoading] = useState(true);
-
+    const { loader, setLoader } = useContext(MyContext);
+    
     useEffect(() => {
+        setLoader(true)
         axios.get("https://jsonplaceholder.typicode.com/posts")
             .then((response) => {
                 setPosts(response.data);
                 setTimeout(() => {
-                    setLoading(false);
-                }, 2500)
+                    setLoader(false)
+                }, 2000);
             })
             .catch((error) => {
                 console.error("Error fetching data:", error);
-                setLoading(false);
+                setLoader(false)
             });
     }, []);
     
-    if (loading) {
-        return <Spinner />
-    }
     return (
         <div className="siteWrap mb-7">
             <div className="heading text-center my-10 py-5">
