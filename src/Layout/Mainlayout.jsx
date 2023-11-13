@@ -22,12 +22,12 @@ const Mainlayout = () => {
 
     return (
         <div className="common">
+            {loader == false ? removeHiddenClass() : <Spinner />}
             <div className="hidden">
                 <Header />
                 <Outlet />
                 <Footer />
             </div>
-            {loader == false ? removeHiddenClass() : <Spinner />}
         </div>
     );
 };

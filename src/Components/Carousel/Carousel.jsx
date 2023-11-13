@@ -1,52 +1,71 @@
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import './Carousel.css'
 
-
+import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
 const Carousel = () => {
+    
+    
+    const HeroSlides = [
+        {
+            name: 'Rekob Ramya',
+            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.',
+            img: 'https://i.ibb.co/jkYSNnF/slide-1.jpg'
+        },
+        {
+            name: 'Brandon Savage',
+            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.',
+            img: 'https://i.ibb.co/5c7cmYc/slide-2.jpg'
+        },
+        {
+            name: 'Steve Burns',
+            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.',
+            img: 'https://i.ibb.co/xYkPMYQ/slide-3.jpg'
+        },
+        {
+            name: 'Steve Burns',
+            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.',
+            img: 'https://picsum.photos/id/20/1920/1080'
+        },
+        {
+            name: 'Steve Burns',
+            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.',
+            img: 'https://picsum.photos/id/14/1920/1080'
+        },
+    ]
+
     return (
         <div>
+            <Swiper
+                cssMode={true}
+                loop={true}
+                navigation={true}
+                pagination={true}
+                mousewheel={true}
+                keyboard={true}
+                modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+                className="mySwiper"
+            >
+
+                {HeroSlides.map((slide, index) => (
+                    <SwiperSlide key={index}>
+                        <div className="sliderWrapper relative">
+                            <div className="imgwrap">
+                                <img src={slide.img} alt={slide.name} />
+                            </div>
+                            <div className="text-center contentPart absolute max-w-[500px] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] ">
+                                <h2 className='text-[40px] mb-4'>{slide.name}</h2>
+                                <p className='text-[18px]'>{slide.description}</p>
+                            </div>
+                        </div>
+                    </SwiperSlide>
+                ))}
 
 
-            <div id="controls-carousel" class="relative w-full" data-carousel="static">
+            </Swiper>
 
-                <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="/docs/images/carousel/carousel-1.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
-                    </div>
-
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-                        <img src="/docs/images/carousel/carousel-2.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
-                    </div>
-
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="/docs/images/carousel/carousel-3.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
-                    </div>
-
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="/docs/images/carousel/carousel-4.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
-                    </div>
-
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="/docs/images/carousel/carousel-5.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
-                    </div>
-                </div>
-                {/* Slider controls */}
-                <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" ariaHidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
-                        </svg>
-                        <span class="sr-only">Previous</span>
-                    </span>
-                </button>
-                <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" ariaHidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
-                        </svg>
-                        <span class="sr-only">Next</span>
-                    </span>
-                </button>
-            </div>
         </div>
     );
 };
